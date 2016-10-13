@@ -16,7 +16,7 @@ This switches the interpreter in to strict mode,
 which disables various language features that make
 it really easy to introduce mistakes.
 */
-"use strict";
+"use strict";       
 
 ///////////////////////////////////////////////////////////
 // VARIABLES and BASIC TYPES
@@ -41,11 +41,14 @@ console.group("PRACTICE: Variables and Basic Types");
 //Create another variable named `y`, assign it the value
 //currently held in the variable `x`, and write the value
 //of `y` to the console log
-
+var y = x;
+console.log("value of y is:", y);
 
 //now assign `y` the numeric value 10
 //what does x contain now? Write it to the console
-
+y = 10;
+console.log("value of y is now:", y);
+console.log("value of x is now:", x);
 
 console.groupEnd();
 
@@ -78,12 +81,17 @@ console.group("PRACTICE: Strings");
 //with some text, and then create another string `s4`
 //and assign it the concatenation of `s2` and `s3`
 //then write it to the console so you can verify it worked.
+var s2 = "I'm s2";
+var s3 = "I'm s3";
+var s4 = s2 + " " +  s3;
+console.log(s4);
 
 
 //use the `.trim()` method to remove the leading and
 //trailing white space from this string
 var withSpaces = "    trim those spaces!     ";
-
+var trimmedString = withSpaces.trim();
+console.log(trimmedString);
 
 console.groupEnd();
 
@@ -113,14 +121,14 @@ console.log("course object:", course);
 
 //keys are also called "properties" becuase you can refer 
 //to them as if they were properties (data members) of an object
-console.log(course.name);
+console.log(course.name);    // ???
 course.year = 2017;
 
 //an alternative syntax lets you refer to keys using another
 //variable, which comes in handy in some situations
 var keyName = "number";
 var valueForKey = course[keyName];  //could reduce to: course["number"]; 
-console.log(valueForKey);           //could reduce to: console.log(course["number"]);
+console.log("valueForKey is ", valueForKey);           //could reduce to: console.log(course["number"]);
 
 //accessing a property that doesn't exist yet will just
 //return undefined, not an error!
@@ -155,9 +163,15 @@ console.group("PRACTICE: Objects");
 //assigning it to a new variable named `course2`
 //use console.log() to view it in the browser console
 
+var course2 ={
+    teacher: "Dave Stearns",
+    student: "Patrick",
+    score: 4.0
+};
 //now try adding a property named `web site` (with a space)
 //setting it to some string value...it's tricky...
-
+course2["web site"] = "http://...";
+console.log(course2);
 
 
 
@@ -199,11 +213,12 @@ console.group("PRACTICE: Arrays");
 //create another array of playing card suits
 //(clubs, diamonds, hearts, spades)
 
-
+var suits = ["clubs", "diamonds", "hearts", "spades"];
+suits.push("jokers");
 //then add a new element named "jokers"
 //afer adding it, access it in the array
 //and log it to the console
-
+console.log(suits);
 
 
 console.groupEnd();
@@ -287,6 +302,7 @@ console.groupCollapsed("Functions");
 function reverseString(s) {
     var reversed = "";
     var idx;
+    s = String(s);
     for (idx = s.length-1; idx >= 0; idx--) {
         //short form of reversed = reversed + s.charAt(idx)
         reversed += s.charAt(idx);
@@ -342,7 +358,11 @@ console.group("PRACTICE: Functions");
 //and returns the minimum of the two, or the first argument
 //if they are equal to each other. Then call it a few times
 //with various numbers to test it.
+var min = function(a,b) {
+    return (b > a) ? a: b;
+}
 
+console.log(min(10,15));
 
 console.groupEnd();
 
@@ -404,6 +424,26 @@ console.group("PRACTICE: Functional Programming");
 //.reduce() to find the minimum value in the array
 //HINT: use the function you wrote above that returns
 //the minimum of the two numbers passed to it
+
+function random {
+    var list = generateRandomNumbers(20,0,100);
+    //list.forEach(double)
+    var list2 = list.map(double());
+
+
+    return list2;
+}
+
+var minNum = list2.reduce(min, 0);
+
+function double(a) {
+    /*var l = list.length;
+    var index;
+    for(index = 0 ; index < l ; index++){
+        list[index] = list[index] * list[index]; */
+        return a * a;
+    }
+}
 
 function generateRandomNumbers(howMany, minimum, maximum) {
     minimum = minimum || 1;     //default minimum to 1
