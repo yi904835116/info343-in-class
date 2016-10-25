@@ -19,6 +19,7 @@ function doAnimation(elem, aniName){
 
 var queryResults = document.querySelector(".query-results");
 var searchForm = document.querySelector(".search-form");
+console.log(searchForm);
 var searchInput = searchForm.querySelector("input");
 var searchButton = searchForm.querySelector("button");
 var spinner = document.querySelector("header .mdl-spinner");
@@ -71,7 +72,7 @@ function renderError(err){
 searchForm.addEventListener("submit", function(evt){
     evt.preventDefault();
 
-    
+
     var query = searchInput.value.trim(); 
     // console.log(query);
     if(query.length <= 0){
