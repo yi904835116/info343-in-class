@@ -1,5 +1,6 @@
 /* put any app-specific style rules here */
 
+<<<<<<< HEAD
 
 .sex-m{
     background: deepskyblue;
@@ -10,5 +11,16 @@
 }
 
 th{
+=======
+.sex-m {
+    background-color: lightskyblue;
+}
+
+.sex-f {
+    background-color: pink;
+}
+
+th {
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
     cursor: pointer;
 }

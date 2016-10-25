@@ -42,13 +42,20 @@ console.group("PRACTICE: Variables and Basic Types");
 //currently held in the variable `x`, and write the value
 //of `y` to the console log
 var y = x;
+<<<<<<< HEAD
 console.log("value of y is:", y);
+=======
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
 
 //now assign `y` the numeric value 10
 //what does x contain now? Write it to the console
 y = 10;
+<<<<<<< HEAD
 console.log("value of y is now:", y);
 console.log("value of x is now:", x);
+=======
+console.log("x is now:", x);
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
 
 console.groupEnd();
 
@@ -81,11 +88,18 @@ console.group("PRACTICE: Strings");
 //with some text, and then create another string `s4`
 //and assign it the concatenation of `s2` and `s3`
 //then write it to the console so you can verify it worked.
+<<<<<<< HEAD
 var s2 = "I'm s2";
 var s3 = "I'm s3";
 var s4 = s2 + " " +  s3;
 console.log(s4);
 
+=======
+var s2 = "Hello";
+var s3 = "World";
+var s4 = s2+s3;
+console.log(s4);
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
 
 //use the `.trim()` method to remove the leading and
 //trailing white space from this string
@@ -146,7 +160,7 @@ course.teacher = {
 console.log("after adding property:", course);
 
 //you can remove properties using delete
-delete course.teacher;
+//delete course.teacher;
 console.log("after deleting property:", course);
 
 //you can test whether an object has a property using the
@@ -162,6 +176,9 @@ console.group("PRACTICE: Objects");
 //Create another object for one of your other courses
 //assigning it to a new variable named `course2`
 //use console.log() to view it in the browser console
+var course2 = {
+
+};
 
 var course2 ={
     teacher: "Dave Stearns",
@@ -170,8 +187,13 @@ var course2 ={
 };
 //now try adding a property named `web site` (with a space)
 //setting it to some string value...it's tricky...
+<<<<<<< HEAD
 course2["web site"] = "http://...";
 console.log(course2);
+=======
+course2["web site"] = "http://....";
+console.log(course2["web site"]);
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
 
 
 
@@ -212,6 +234,7 @@ console.group("PRACTICE: Arrays");
 //--PRACTICE--
 //create another array of playing card suits
 //(clubs, diamonds, hearts, spades)
+<<<<<<< HEAD
 
 var suits = ["clubs", "diamonds", "hearts", "spades"];
 suits.push("jokers");
@@ -219,6 +242,15 @@ suits.push("jokers");
 //afer adding it, access it in the array
 //and log it to the console
 console.log(suits);
+=======
+var suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+
+//then add a new element named "jokers"
+//afer adding it, access it in the array
+//and log it to the console
+suits.push("jokers");
+console.log(suits[suits.length - 1]);
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
 
 
 console.groupEnd();
@@ -358,11 +390,17 @@ console.group("PRACTICE: Functions");
 //and returns the minimum of the two, or the first argument
 //if they are equal to each other. Then call it a few times
 //with various numbers to test it.
+<<<<<<< HEAD
 var min = function(a,b) {
     return (b > a) ? a: b;
 }
 
 console.log(min(10,15));
+=======
+function minimum(n1, n2) {
+    return n2 < n1 ? n2 : n1;
+}
+>>>>>>> 5531321fa54c1ecf8d7b4b81623f5a75f1382d7d
 
 console.groupEnd();
 
@@ -457,7 +495,14 @@ function generateRandomNumbers(howMany, minimum, maximum) {
 }
 
 //>>> your code goes here!
+var ranNums = generateRandomNumbers(100);
+ranNums.forEach(logMe);
 
+var dblNums = ranNums.map(function(n) { return n*2; });
+console.log(ranNums, dblNums);
+
+var minNum = ranNums.reduce(minimum, ranNums[0]);
+console.log("The minimum is %d", minNum);
 
 //now use the .sort() method on a generated array of random
 //numbers to sort them. Note that by default, sort will 
@@ -465,7 +510,11 @@ function generateRandomNumbers(howMany, minimum, maximum) {
 //you need to supply a comparator function that comapres them
 //as numbers.
 //see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-
+function compNums(n1, n2) {
+    return n1 - n2;
+}
+var sortedNums = ranNums.sort(compNums);
+console.log(sortedNums);
 
 
 console.groupEnd();
