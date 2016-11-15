@@ -61,7 +61,7 @@ export default class extends React.Component {
                     <ul>
                         <li>
                             <IndexLink to="/" activeClassName="active">
-                                Products
+                                Products 
                             </IndexLink>
                         </li>
                         <li>
@@ -71,8 +71,11 @@ export default class extends React.Component {
                         </li>
                     </ul>
                 </nav>
+
+
                 <main>
                     {this.props.children}
+                    
                 </main>
             </div>
         );

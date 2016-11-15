@@ -15,7 +15,7 @@ import "whatwg-fetch";
 
 import Movie from "./movie.jsx";
 
-const APIKEY = "...your api key here...";
+const APIKEY = "98e8acb59a3553a59983214b127a695f";
 const BASE_URL = "https://api.themoviedb.org/3"
 const DISCOVER_API = BASE_URL + "/discover/movie?api_key=" + APIKEY;
 const GENRES_API = BASE_URL + "/genre/movie/list?api_key=" + APIKEY;
@@ -71,7 +71,9 @@ export default class extends React.Component {
 
             //set movies to an array of <Movie> components, each of which gets
             //a property named `movie` set to the current movie object
+            
             movies = this.state.movies.results.map(m => <Movie key={m.id} movie={m} />);
+
         }
         
         return (
