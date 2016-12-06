@@ -63,7 +63,7 @@
 //the source string doesn't start with `./` the module 
 //importer will look for the module by name in the 
 //node_modules directory
-import {createStore} from "redux";
+import { createStore } from "redux";
 
 //action names
 //the values for these names just need to be unique.
@@ -76,7 +76,7 @@ const REMOVE_FAV_ACTION = "removefav";
 //default state for our redux store
 //just a simple object with one property named `favorites`,
 //which is set to an empty array.
-const DEFAULT_STATE = {favorites: []};
+const DEFAULT_STATE = { favorites: [] };
 
 //local storage key: this is passed to localStorage.getItem()
 //and localStorage.setItem() to get/set the contents of the store.
@@ -95,18 +95,18 @@ const LS_KEY = "redux-store";
 function reducer(state, action) {
     //switch is like if/elseif/elseif/elseif/.../else
     //just more compact
-    switch(action.type) {
+    switch (action.type) {
         case ADD_FAV_ACTION:
             //if the item already exists in the favorites
             //array, just return the old state
-            if (state.favorites.find(item => item.id === action.item.id)) {
+            if (state.favorites.find(m => m.id === action.item.id)) {
                 return state;
             }
 
             //create a new state object (see above as to why)
             //Object.assign() will assign all properties from
             //the `state` object to the new object we pass as 
-            //the first parameter. This is how we clone objects
+            //the <fir></fir>st parameter. This is how we clone objects
             //in JavaScript. See:
             //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
             var newState = Object.assign({}, state);
@@ -115,13 +115,13 @@ function reducer(state, action) {
             //using `.push()` here would mutate state.favorites, which you 
             //shouldn't do in redux. Always use `.concat()` instead.
             newState.favorites = newState.favorites.concat(action.item);
-            return newState;            
-            //the above lines could be shortened to a single line like this:
-            //return Object.assign({}, state, {favorites: state.favorites.concat(action.item)});
+            return newState;
+        //the above lines could be shortened to a single line like this:
+        //return Object.assign({}, state, {favorites: state.favorites.concat(action.item)});
         case REMOVE_FAV_ACTION:
             //return a new state object with a new favorites array
             //with the specified item removed; use `.filter()` to remove it
-            return Object.assign({}, state, {favorites: state.favorites.filter(item => item.id != action.id)});
+            return Object.assign({}, state, { favorites: state.favorites.filter(item => item.id != action.id) });
         default:
             //if we don't recognize the action, return the state
             //that was passed in to us; redux requires this

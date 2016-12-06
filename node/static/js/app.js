@@ -58,8 +58,8 @@ function onPositionError(err) {
 //user to reveal their current location
 if (navigator && navigator.geolocation) {
     //ask the user to get our current position
-    navigator.geolocation.getCurrentPosition(onPosition, onPositionError, 
-        {enableHighAccuracy: true});
+    navigator.geolocation.getCurrentPosition(onPosition, onPositionError,
+        { enableHighAccuracy: true });
 } else {
     //just fetch bars around our default coordinates
     fetchBars(seattleCoords);
@@ -80,4 +80,33 @@ function fetchBars(latlng) {
 
     //TODO: fetch the nearby bars
     //and add them to the map
+    var url = "/api/v1/search";
+    url += "?lat" + latlng.lat;
+    url += "&lng=" + latlng.lng;
+    console.log("fetching", url);
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            data.businesses.forEach(function (rec) {
+                var blatlng = L.latlng(rec.location.coordinate.latitude, rec.location.coordinate.longitude);
+                var marker = L.circleMaker(blatlng).addTo(map);
+
+                var divPopup = document.createElement("div");
+                var h2 = divPopup.appendChild(document.createElement("h2"));
+                h2.textContent = rec.name;
+                marker.bindPopup(divPopup);
+
+                var img = divPopup.appendChild(document.createElement("img"));
+                img.src = rec.rating_img_url;
+                img.a;
+
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+        })
+
 } 
